@@ -30,4 +30,10 @@ public class LoginActivity extends Activity{
             startActivity(intent);
         }
     }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        this.finish();
+    }
 }
