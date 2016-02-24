@@ -1,6 +1,7 @@
 package info.jfknapp.parkcompanion.Login;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -31,7 +32,6 @@ public class LoginActivity extends Activity implements LoginView{
 
 
         presenter.checkUserCredentials(mUsername, mPassword);
-        this.navigateToMain();
     }
 
     @Override
@@ -44,5 +44,10 @@ public class LoginActivity extends Activity implements LoginView{
         Intent intent = new Intent(this, MainMenuActivity.class);
         this.startActivity(intent);
         this.finish();
+    }
+
+    @Override
+    public Context getContext(){
+        return this;
     }
 }

@@ -5,4 +5,6 @@ package info.jfknapp.parkcompanion.Login;
  */
 public interface LoginInteractor {
     void login(String username, String password, LoginListener listener);
+    void addUser(String username, String password);
+    void deleteUser(String username);
 }

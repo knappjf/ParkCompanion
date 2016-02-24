@@ -21,4 +21,10 @@ public class LoginInteractorClass implements LoginInteractor {
             listener.onSuccess();
         }
     }
+
+    @Override
+    public void addUser(String username, String password){}
+
+    @Override
+    public void deleteUser(String username){};
 }
