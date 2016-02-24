@@ -3,6 +3,7 @@ package info.jfknapp.parkcompanion.Settings;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 
 import info.jfknapp.parkcompanion.R;
@@ -19,7 +20,7 @@ public class SettingsActivity extends Activity implements SettingsView {
         this.presenter = new SettingsPresenterClass(this);
     }
 
-    public void onSaveButton(){
+    public void onSaveButton(View view){
         mServerAddressField = (EditText) this.findViewById(R.id.editText);
         mServerPortField = (EditText) this.findViewById(R.id.editText2);
 
@@ -29,7 +30,7 @@ public class SettingsActivity extends Activity implements SettingsView {
         this.finish();
     }
 
-    public void onCancelButton(){
+    public void onCancelButton(View view){
         this.finish();
     }
 
