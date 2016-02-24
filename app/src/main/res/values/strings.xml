@@ -3,13 +3,15 @@
 
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="button_login">Login</string>
+
 
     <string name="server_address">Server Address</string>
     <string name="server_port">Server Port</string>
+
+
+    <string name="menu">Menu</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-
-    <string name="quit">Quit</string>
-    <string name="menu">Menu</string>
+    <string name="login">Login</string>
+    <string name="settings">Settings</string>
 </resources>
