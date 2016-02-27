@@ -9,8 +9,6 @@ public class SettingsPresenterClass implements SettingsPresenter, SettingsListen
     private SettingsView mSettingsView;
     private Settings mSettings;
 
-    private final String TAG = "[Park Companion]";
-
     public SettingsPresenterClass(SettingsView settingsView){
         this.mSettingsView = settingsView;
         this.mSettings = new SettingsClass(mSettingsView.getContext());
@@ -18,16 +16,30 @@ public class SettingsPresenterClass implements SettingsPresenter, SettingsListen
 
     @Override
     public void updateSetting(String key, String value){
-        this.mSettings.setValue(key, value);
+        mSettings.setValue(key, value);
+
+        if(mSettings.getValue(key) == value){
+            onSettingChange();
+        }
+        else{
+            onSettingError(mSettings.SETTINGS_ERROR);
+        }
     }
 
     @Override
     public void onSettingChange(){
-        Log.d(this.TAG, "Setting Changed Successfully");
+        Log.d(this.TAG, mSettings.SETTINGS_SUCCESS);
+        Log.d(this.TAG, "Server Address:" + mSettings.getValue(mSettings.SERVER_ADDRESS_STRING));
+        Log.d(this.TAG, "Server Port:" + mSettings.getValue(mSettings.SERVER_PORT_STRING));
     }
 
     @Override
     public void onSettingError(String error){
-        Log.d(this.TAG, "Error:" + error);
+        Log.d(this.TAG, error);
+    }
+
+    @Override
+    public String debugSetting(String key){
+        return mSettings.getValue(key);
     }
 }

@@ -3,6 +3,7 @@ package info.jfknapp.parkcompanion.Settings;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -24,14 +25,19 @@ public class SettingsActivity extends Activity implements SettingsView {
         mServerAddressField = (EditText) this.findViewById(R.id.editText);
         mServerPortField = (EditText) this.findViewById(R.id.editText2);
 
-        presenter.updateSetting("serverIP", mServerAddressField.getText().toString());
-        presenter.updateSetting("serverPort", mServerPortField.getText().toString());
+        presenter.updateSetting(Settings.SERVER_ADDRESS_STRING, mServerAddressField.getText().toString());
+        presenter.updateSetting(Settings.SERVER_PORT_STRING, mServerPortField.getText().toString());
 
-        this.finish();
+        //this.finish();
     }
 
     public void onCancelButton(View view){
         this.finish();
+    }
+
+    public void debug(View view){
+        Log.d(presenter.TAG, "Server Address:" + presenter.debugSetting(Settings.SERVER_ADDRESS_STRING));
+        Log.d(presenter.TAG, "Server Port:" + presenter.debugSetting(Settings.SERVER_PORT_STRING));
     }
 
     @Override
