@@ -36,8 +36,8 @@ public class SettingsActivity extends Activity implements SettingsView {
     }
 
     public void debug(View view){
-        Log.d(presenter.TAG, "Server Address:" + presenter.debugSetting(Settings.SERVER_ADDRESS_STRING));
-        Log.d(presenter.TAG, "Server Port:" + presenter.debugSetting(Settings.SERVER_PORT_STRING));
+        Log.d(SettingsPresenter.TAG, "Server Address:" + presenter.debugSetting(Settings.SERVER_ADDRESS_STRING));
+        Log.d(SettingsPresenter.TAG, "Server Port:" + presenter.debugSetting(Settings.SERVER_PORT_STRING));
     }
 
     @Override

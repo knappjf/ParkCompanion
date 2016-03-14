@@ -22,20 +22,20 @@ public class SettingsPresenterClass implements SettingsPresenter, SettingsListen
             onSettingChange();
         }
         else{
-            onSettingError(mSettings.SETTINGS_ERROR);
+            onSettingError(Settings.SETTINGS_ERROR);
         }
     }
 
     @Override
     public void onSettingChange(){
-        Log.d(this.TAG, mSettings.SETTINGS_SUCCESS);
-        Log.d(this.TAG, "Server Address:" + mSettings.getValue(mSettings.SERVER_ADDRESS_STRING));
-        Log.d(this.TAG, "Server Port:" + mSettings.getValue(mSettings.SERVER_PORT_STRING));
+        Log.d(TAG, Settings.SETTINGS_SUCCESS);
+        Log.d(TAG, "Server Address:" + mSettings.getValue(Settings.SERVER_ADDRESS_STRING));
+        Log.d(TAG, "Server Port:" + mSettings.getValue(Settings.SERVER_PORT_STRING));
     }
 
     @Override
     public void onSettingError(String error){
-        Log.d(this.TAG, error);
+        Log.d(TAG, error);
     }
 
     @Override

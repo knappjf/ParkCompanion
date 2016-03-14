@@ -26,5 +26,5 @@ public class LoginInteractorClass implements LoginInteractor {
     public void addUser(String username, String password){}
 
     @Override
-    public void deleteUser(String username){};
+    public void deleteUser(String username){}
 }
