@@ -38,4 +38,11 @@
         android:text="Communication"
         android:id="@+id/comm_button"
         android:onClick="onCommButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Information"
+        android:id="@+id/info_button"
+        android:onClick="onInfoButton" />
 </LinearLayout>

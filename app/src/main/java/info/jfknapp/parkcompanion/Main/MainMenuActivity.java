@@ -7,6 +7,7 @@ import android.view.View;
 
 import info.jfknapp.parkcompanion.R;
 import info.jfknapp.parkcompanion.communication.CommunicationActivity;
+import info.jfknapp.parkcompanion.info.InfoActivity;
 import info.jfknapp.parkcompanion.login.LoginActivity;
 import info.jfknapp.parkcompanion.settings.SettingsActivity;
 import info.jfknapp.parkcompanion.tasks.TasksActivity;
@@ -37,6 +38,11 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public void onCommButton(View view){
         Intent intent = new Intent(this, CommunicationActivity.class);
+        this.startActivity(intent);
+    }
+
+    public void onInfoButton(View view){
+        Intent intent = new Intent(this, InfoActivity.class);
         this.startActivity(intent);
     }
 }
