@@ -1,4 +1,4 @@
-package info.jfknapp.parkcompanion.Settings;
+package info.jfknapp.parkcompanion.settings;
 
 /**
  * Created by Jeff on 2/23/2016.

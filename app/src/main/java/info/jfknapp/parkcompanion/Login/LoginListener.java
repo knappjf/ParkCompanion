@@ -1,4 +1,4 @@
-package info.jfknapp.parkcompanion.Login;
+package info.jfknapp.parkcompanion.login;
 
 /**
  * Created by Jeff on 2/17/2016.

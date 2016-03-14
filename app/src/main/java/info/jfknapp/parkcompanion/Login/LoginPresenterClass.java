@@ -1,9 +1,9 @@
-package info.jfknapp.parkcompanion.Login;
+package info.jfknapp.parkcompanion.login;
 
 import android.os.Handler;
 import android.util.Log;
 
-import info.jfknapp.parkcompanion.Settings.SettingsClass;
+import info.jfknapp.parkcompanion.settings.SettingsClass;
 
 /**
  * Created by Jeff on 2/17/2016.
@@ -56,6 +56,5 @@ public class LoginPresenterClass implements LoginPresenter, LoginListener {
     @Override
     public void onSuccess(){
         Log.d(this.TAG, "Username and password correct");
-        this.mLoginView.navigateToMain();
     }
 }

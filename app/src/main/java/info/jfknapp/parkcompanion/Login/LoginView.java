@@ -1,4 +1,4 @@
-package info.jfknapp.parkcompanion.Login;
+package info.jfknapp.parkcompanion.login;
 
 import android.content.Context;
 

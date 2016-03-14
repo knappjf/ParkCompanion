@@ -1,13 +1,15 @@
-package info.jfknapp.parkcompanion.Main;
+package info.jfknapp.parkcompanion.main;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import info.jfknapp.parkcompanion.Login.LoginActivity;
 import info.jfknapp.parkcompanion.R;
-import info.jfknapp.parkcompanion.Settings.SettingsActivity;
+import info.jfknapp.parkcompanion.communication.CommunicationActivity;
+import info.jfknapp.parkcompanion.login.LoginActivity;
+import info.jfknapp.parkcompanion.settings.SettingsActivity;
+import info.jfknapp.parkcompanion.tasks.TasksActivity;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -25,6 +27,16 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public void onSettingsButton(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
+        this.startActivity(intent);
+    }
+
+    public void onTasksButton(View view){
+        Intent intent = new Intent(this, TasksActivity.class);
+        this.startActivity(intent);
+    }
+
+    public void onCommButton(View view){
+        Intent intent = new Intent(this, CommunicationActivity.class);
         this.startActivity(intent);
     }
 }

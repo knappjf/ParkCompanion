@@ -1,4 +1,4 @@
-package info.jfknapp.parkcompanion.Login;
+package info.jfknapp.parkcompanion.login;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import info.jfknapp.parkcompanion.Main.MainMenuActivity;
 import info.jfknapp.parkcompanion.R;
+import info.jfknapp.parkcompanion.main.MainMenuActivity;
 
 public class LoginActivity extends Activity implements LoginView{
 
@@ -32,6 +32,7 @@ public class LoginActivity extends Activity implements LoginView{
 
 
         presenter.checkUserCredentials(mUsername, mPassword);
+        navigateToMain();
     }
 
     @Override

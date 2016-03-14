@@ -1,4 +1,4 @@
-package info.jfknapp.parkcompanion.Settings;
+package info.jfknapp.parkcompanion.settings;
 
 import android.content.Context;
 
