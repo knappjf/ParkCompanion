@@ -10,6 +10,10 @@
     <!-- Buttons -->
     <string name="login_button">Login</string>
     <string name="settings_button">Settings</string>
+    <string name="tasks_button">Tasks</string>
+    <string name="parks_button">Parks</string>
+    <string name="contacts_button">Contacts</string>
+    <string name="logout_button">Logout</string>
 
     <!-- Settings titles -->
     <string name="address">Server IP</string>
