@@ -10,4 +10,9 @@
     <!-- Buttons -->
     <string name="login_button">Login</string>
     <string name="settings_button">Settings</string>
+
+    <!-- Settings titles -->
+    <string name="address">Server IP</string>
+    <string name="port">Server Port</string>
+
 </resources>
