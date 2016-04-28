@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import info.jfknapp.parkcompanion.R;
+import info.jfknapp.parkcompanion.menu.MainMenuActivity;
+import info.jfknapp.parkcompanion.util.Presenter;
 import info.jfknapp.parkcompanion.util.Session;
 
 public class LoginActivity extends Activity {
@@ -29,9 +31,14 @@ public class LoginActivity extends Activity {
     public void onLoginButton(View v){
         String username = mUsernameField.getText().toString();
         String password = mPasswordField.getText().toString();
+
+        navigateToMenu();
     }
 
     public void navigateToMenu(){
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 
 }
