@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import info.jfknapp.parkcompanion.R;
+import info.jfknapp.parkcompanion.contacts.ContactListActivity;
 import info.jfknapp.parkcompanion.tasks.TaskListActivity;
 
 public class MainMenuActivity extends Activity{
@@ -22,7 +23,10 @@ public class MainMenuActivity extends Activity{
 
     public void onParksButton(View v){}
 
-    public void onContactsButton(View v){}
+    public void onContactsButton(View v){
+        Intent intent = new Intent(this, ContactListActivity.class);
+        startActivity(intent);
+    }
 
     public void onSettingsButton(View v){}
 
