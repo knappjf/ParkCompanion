@@ -1,9 +1,12 @@
 package info.jfknapp.parkcompanion.menu;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import info.jfknapp.parkcompanion.R;
+import info.jfknapp.parkcompanion.tasks.TaskListActivity;
 
 public class MainMenuActivity extends Activity{
     @Override
@@ -11,4 +14,17 @@ public class MainMenuActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
     }
+
+    public void onTasksButton(View v){
+        Intent intent = new Intent(this, TaskListActivity.class);
+        startActivity(intent);
+    }
+
+    public void onParksButton(View v){}
+
+    public void onContactsButton(View v){}
+
+    public void onSettingsButton(View v){}
+
+    public void onLogoutButton(View v){}
 }

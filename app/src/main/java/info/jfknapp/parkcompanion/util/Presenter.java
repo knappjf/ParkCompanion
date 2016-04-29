@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by Jeff on 4/25/2016.
- */
 public class Presenter {
     protected Activity mActivity;
     protected SharedPreferences mSettings;
