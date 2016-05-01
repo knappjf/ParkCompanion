@@ -19,6 +19,7 @@
         <activity android:name=".menu.MainMenuActivity" />
         <activity android:name=".tasks.TaskListActivity" />
         <activity android:name=".contacts.ContactListActivity" />
+        <activity android:name=".login.LoginSettingsActivity" />
     </application>
 
 </manifest>

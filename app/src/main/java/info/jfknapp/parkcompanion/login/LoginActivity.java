@@ -35,10 +35,19 @@ public class LoginActivity extends Activity {
         navigateToMenu();
     }
 
+    public void onSettingsButton(View v){
+        navigateToLoginSettings();
+    }
+
     public void navigateToMenu(){
         Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    public void navigateToLoginSettings(){
+        Intent intent = new Intent(this, LoginSettingsActivity.class);
+        startActivity(intent);
     }
 
 }
