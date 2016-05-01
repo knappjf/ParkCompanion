@@ -6,5 +6,18 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal">
 
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/task_details_button"
+        android:onClick="onDetailsButton"
+        />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/task_edit_button"
+        android:onClick="onEditButton"
+        />
 
 </LinearLayout>

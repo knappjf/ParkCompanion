@@ -14,6 +14,8 @@
     <string name="logout_button">Logout</string>
 
     <string name="tasks_button">Tasks</string>
+    <string name="task_edit_button">Task Edit</string>
+    <string name="task_details_button">Task Details</string>
 
     <string name="contacts_button">Contacts</string>
     <string name="contact_edit_button">Contact Edit</string>
