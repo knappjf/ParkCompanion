@@ -10,8 +10,11 @@
     <!-- Buttons -->
     <string name="login_button">Login</string>
     <string name="settings_button">Settings</string>
-    <string name="parks_button">Parks</string>
     <string name="logout_button">Logout</string>
+
+    <string name="parks_button">Parks</string>
+    <string name="park_edit_button">Park Edit</string>
+    <string name="park_details_button">Park Details</string>
 
     <string name="tasks_button">Tasks</string>
     <string name="task_edit_button">Task Edit</string>
