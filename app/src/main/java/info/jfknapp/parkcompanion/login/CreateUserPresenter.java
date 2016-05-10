@@ -5,40 +5,36 @@ import info.jfknapp.parkcompanion.util.Presenter;
 import info.jfknapp.parkcompanion.util.Session;
 import info.jfknapp.parkcompanion.util.Util;
 
-public class LoginPresenter extends Presenter{
+public class CreateUserPresenter extends Presenter {
 
-    private LoginActivity mActivity;
-
-    public LoginPresenter(LoginActivity activity){
+    public CreateUserPresenter(CreateUserActivity activity) {
         super(activity);
-        mActivity = activity;
     }
 
-    public void login(String username, String password){
+    public void createUser(String username, String password) {
         try {
             HttpRequest request = new HttpRequest(Util.ADDRESS, Util.CHARSET);
-            request.addParam("command", "login");
+            request.addParam("command", "user");
+            request.addParam("option", "create");
             request.addParam("name", username);
             request.addParam("password", password);
             request.execute();
 
             if (request.getStatus() == "Success") {
-                onLoginSuccess(username);
+                onCreateSuccess();
             } else {
-                onLoginFailure();
+                onCreateFailure();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void onLoginSuccess(String username) {
-        Session.setUser(username);
-
-        Session.log("User logged in successfully");
+    private void onCreateSuccess() {
+        Session.log("User successfully created");
     }
 
-    private void onLoginFailure() {
-        Session.log("Failed to login");
+    private void onCreateFailure() {
+        Session.log("Failed to create user");
     }
 }

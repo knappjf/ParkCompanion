@@ -9,7 +9,6 @@ import android.widget.EditText;
 
 import info.jfknapp.parkcompanion.R;
 import info.jfknapp.parkcompanion.menu.MainMenuActivity;
-import info.jfknapp.parkcompanion.util.Presenter;
 import info.jfknapp.parkcompanion.util.Session;
 
 public class LoginActivity extends Activity {
@@ -22,17 +21,28 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mUsernameField = (EditText)findViewById(R.id.edit_text1);
-        mPasswordField = (EditText)findViewById(R.id.edit_text2);
+        mUsernameField = (EditText) findViewById(R.id.login_username_field);
+        mPasswordField = (EditText) findViewById(R.id.login_password_field);
 
         mPresenter = new LoginPresenter(this);
     }
 
     public void onLoginButton(View v){
-        String username = mUsernameField.getText().toString();
-        String password = mPasswordField.getText().toString();
+        final String username = mUsernameField.getText().toString();
+        final String password = mPasswordField.getText().toString();
 
+//        new Thread(
+//                new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        mPresenter.login(username,password);
+//                    }
+//                }
+//        ).start();
+
+        // if(Session.getUser() == username){
         navigateToMenu();
+        // }
     }
 
     public void onSettingsButton(View v){
@@ -45,8 +55,14 @@ public class LoginActivity extends Activity {
         this.finish();
     }
 
+    //For now, login settings won't be functional
     public void navigateToLoginSettings(){
         Intent intent = new Intent(this, LoginSettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void onCreateUserButton(View v) {
+        Intent intent = new Intent(this, CreateUserActivity.class);
         startActivity(intent);
     }
 

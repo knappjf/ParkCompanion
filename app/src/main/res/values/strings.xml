@@ -10,6 +10,7 @@
     <!-- Buttons -->
     <string name="login_button">Login</string>
     <string name="settings_button">Settings</string>
+    <string name="create_user_button">Create User</string>
     <string name="logout_button">Logout</string>
 
     <string name="parks_button">Parks</string>
@@ -17,15 +18,27 @@
     <string name="park_details_button">Park Details</string>
 
     <string name="tasks_button">Tasks</string>
-    <string name="task_edit_button">Task Edit</string>
-    <string name="task_details_button">Task Details</string>
+    <string name="task_edit_button">Edit</string>
+    <string name="task_details_button">Details</string>
+    <string name="task_create_button">New</string>
+    <string name="task_delete_button">Delete</string>
 
     <string name="contacts_button">Contacts</string>
     <string name="contact_edit_button">Contact Edit</string>
     <string name="contact_details_button">Contact Details</string>
 
+    <string name="save_changes_button">Save</string>
+    <string name="refresh_button">Refresh</string>
+
     <!-- Settings titles -->
-    <string name="address">Server IP</string>
-    <string name="port">Server Port</string>
+    <string name="server_address">Server IP</string>
+    <string name="server_port">Server Port</string>
+
+    <string name="task_database_name">tasks</string>
+    <string name="contact_database_name">contacts</string>
+
+    <string name="task_name_title">Name:</string>
+    <string name="task_park_title">Park:</string>
+    <string name="task_description_title">Description:</string>
 
 </resources>

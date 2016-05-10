@@ -8,6 +8,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         >
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/title_activity_login"
@@ -20,14 +23,12 @@
         <activity android:name=".tasks.TaskListActivity" />
         <activity android:name=".contacts.ContactListActivity" />
         <activity android:name=".login.LoginSettingsActivity" />
-        <activity android:name=".parks.ParkListActivity" />
+        <activity android:name=".login.CreateUserActivity" />
         <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".contacts.ContactEditActivity" />
         <activity android:name=".contacts.ContactDetailsActivity" />
         <activity android:name=".tasks.TaskDetailsActivity" />
         <activity android:name=".tasks.TaskEditActivity" />
-        <activity android:name=".parks.ParkDetailsActivity" />
-        <activity android:name=".parks.ParkEditActivity" />
     </application>
 
 </manifest>

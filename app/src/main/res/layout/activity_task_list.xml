@@ -6,18 +6,40 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal">
 
-    <Button
-        android:layout_height="wrap_content"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:text="@string/task_details_button"
-        android:onClick="onDetailsButton"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <Button
-        android:layout_height="wrap_content"
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/task_details_button"
+            android:onClick="onDetailsButton" />
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/task_edit_button"
+            android:onClick="onEditButton" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_create_button"
+            android:onClick="onCreateTaskButton" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refresh_button"
+            android:onClick="onRefreshButton" />
+
+    </LinearLayout>
+
+    <ListView
         android:layout_width="wrap_content"
-        android:text="@string/task_edit_button"
-        android:onClick="onEditButton"
-        />
+        android:layout_height="match_parent"
+        android:id="@+id/task_listview" />
 
 </LinearLayout>
