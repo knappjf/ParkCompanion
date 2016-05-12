@@ -1,5 +1,14 @@
 package info.jfknapp.parkcompanion.login;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.content.LocalBroadcastManager;
+
 import info.jfknapp.parkcompanion.util.HttpRequest;
 import info.jfknapp.parkcompanion.util.Presenter;
 import info.jfknapp.parkcompanion.util.Session;
@@ -8,34 +17,43 @@ import info.jfknapp.parkcompanion.util.Util;
 public class LoginPresenter extends Presenter{
 
     private LoginActivity mActivity;
+    private String mUsername;
+    private String mPassword;
 
     public LoginPresenter(LoginActivity activity){
         super(activity);
         mActivity = activity;
+
+        LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReciever, new IntentFilter("login-event"));
+
+
     }
 
-    public void login(String username, String password){
-        try {
-            HttpRequest request = new HttpRequest(Util.ADDRESS, Util.CHARSET);
-            request.addParam("command", "login");
-            request.addParam("name", username);
-            request.addParam("password", password);
-            request.execute();
-
-            if (request.getStatus() == "Success") {
-                onLoginSuccess(username);
+    private BroadcastReceiver mReciever = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getStringExtra("result").equals("Success")) {
+                onLoginSuccess();
             } else {
                 onLoginFailure();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+    };
+
+    public void login(String username, String password){
+        mUsername = username;
+        mPassword = password;
+
+        LoginTaskRunnable task = new LoginTaskRunnable(mUsername, mPassword, mActivity);
+        new Thread(task).start();
+
     }
 
-    private void onLoginSuccess(String username) {
-        Session.setUser(username);
+    private void onLoginSuccess() {
+        Session.setUser(mUsername);
 
         Session.log("User logged in successfully");
+        mActivity.navigateToMenu();
     }
 
     private void onLoginFailure() {

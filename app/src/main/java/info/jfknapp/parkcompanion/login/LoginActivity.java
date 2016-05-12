@@ -31,18 +31,7 @@ public class LoginActivity extends Activity {
         final String username = mUsernameField.getText().toString();
         final String password = mPasswordField.getText().toString();
 
-//        new Thread(
-//                new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        mPresenter.login(username,password);
-//                    }
-//                }
-//        ).start();
-
-        // if(Session.getUser() == username){
-        navigateToMenu();
-        // }
+        mPresenter.login(username, password);
     }
 
     public void onSettingsButton(View v){

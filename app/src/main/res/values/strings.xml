@@ -41,4 +41,8 @@
     <string name="task_park_title">Park:</string>
     <string name="task_description_title">Description:</string>
 
+    <!--This will be removed for the final build-->
+    <string name="default_username">jeff</string>
+    <string name="default_password">123</string>
+
 </resources>
