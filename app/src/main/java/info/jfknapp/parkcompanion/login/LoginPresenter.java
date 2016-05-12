@@ -4,15 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+
 import android.support.v4.content.LocalBroadcastManager;
 
-import info.jfknapp.parkcompanion.util.HttpRequest;
 import info.jfknapp.parkcompanion.util.Presenter;
 import info.jfknapp.parkcompanion.util.Session;
-import info.jfknapp.parkcompanion.util.Util;
 
 public class LoginPresenter extends Presenter{
 
@@ -25,8 +21,6 @@ public class LoginPresenter extends Presenter{
         mActivity = activity;
 
         LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReciever, new IntentFilter("login-event"));
-
-
     }
 
     private BroadcastReceiver mReciever = new BroadcastReceiver() {
@@ -46,7 +40,6 @@ public class LoginPresenter extends Presenter{
 
         LoginTaskRunnable task = new LoginTaskRunnable(mUsername, mPassword, mActivity);
         new Thread(task).start();
-
     }
 
     private void onLoginSuccess() {

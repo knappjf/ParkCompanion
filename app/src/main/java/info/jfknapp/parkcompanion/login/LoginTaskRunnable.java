@@ -43,6 +43,5 @@ public class LoginTaskRunnable implements Runnable {
         intent.putExtra("result", result);
 
         LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
-
     }
 }
