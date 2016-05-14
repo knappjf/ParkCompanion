@@ -1,21 +1,23 @@
 package info.jfknapp.parkcompanion.login;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.content.LocalBroadcastManager;
+
+import org.json.JSONException;
+
+import java.io.IOException;
 
 import info.jfknapp.parkcompanion.R;
 import info.jfknapp.parkcompanion.util.HttpRequest;
 import info.jfknapp.parkcompanion.util.Util;
 
-public class LoginTaskRunnable implements Runnable {
+public class CreateUserTaskRunnable implements Runnable{
     private String mUsername;
     private String mPassword;
     private Context mContext;
     private SharedPreferences mSettings;
 
-    public LoginTaskRunnable(String username, String password, Context context) {
+    public CreateUserTaskRunnable(String username, String password, Context context){
         mUsername = username;
         mPassword = password;
         mContext = context;
@@ -24,23 +26,26 @@ public class LoginTaskRunnable implements Runnable {
 
     @Override
     public void run() {
-        try {
-            String address = mSettings.getString("address", mContext.getResources().getString(R.string.default_address));
-            address = address.concat(mContext.getResources().getString(R.string.default_server_file));
+//        Load the server address from settings
+        String address = mSettings.getString("address", mContext.getResources().getString(R.string.default_address));
+        address = address.concat(mContext.getResources().getString(R.string.default_server_file));
 
+        try {
             HttpRequest request = new HttpRequest(address, Util.CHARSET);
-            request.addParam("username", mUsername);
+            request.addParam("command", "user");
+            request.addParam("option", "create");
+            request.addParam("name", mUsername);
             request.addParam("password", mPassword);
-            request.addParam("command", "login");
 
             request.execute();
 
             if (request.getStatus().equals("Success")) {
-                Util.sendMessage("Success", mContext, "login-intent");
+                Util.sendMessage("Success", mContext, "create-user-intent");
             } else {
-                Util.sendMessage("Failure", mContext, "login-intent");
+                Util.sendMessage("Failure", mContext, "create-user-intent");
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -23,7 +23,7 @@ public class LoginPresenter extends Presenter{
         mActivity = activity;
         mSession = Session.getInstance();
 
-        LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReciever, new IntentFilter("login-event"));
+        LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReciever, new IntentFilter("login-intent"));
     }
 
     private BroadcastReceiver mReciever = new BroadcastReceiver() {

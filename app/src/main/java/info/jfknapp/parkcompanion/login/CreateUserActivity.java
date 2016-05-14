@@ -8,9 +8,7 @@ import android.widget.EditText;
 import info.jfknapp.parkcompanion.R;
 
 public class CreateUserActivity extends Activity {
-    private CreateUserPresenter presenter;
-    private String username;
-    private String password;
+    private CreateUserPresenter mPresenter;
     private EditText usernameField;
     private EditText passwordField;
 
@@ -18,21 +16,16 @@ public class CreateUserActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
-        presenter = new CreateUserPresenter(this);
+        mPresenter = new CreateUserPresenter(this);
         usernameField = (EditText) findViewById(R.id.create_username);
         passwordField = (EditText) findViewById(R.id.create_password);
     }
 
     public void onCreateUserButton(View v) {
-        username = usernameField.getText().toString();
-        password = passwordField.getText().toString();
+        String username = usernameField.getText().toString();
+        String password = passwordField.getText().toString();
 
-        new Thread(new Runnable() {
-            public void run() {
-                presenter.createUser(username, password);
-            }
-        }
-        ).start();
+        mPresenter.createUser(username, password);
 
         this.finish();
     }
