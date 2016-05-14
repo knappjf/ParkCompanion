@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 
 import android.support.v4.content.LocalBroadcastManager;
 
+import info.jfknapp.parkcompanion.util.Logger;
 import info.jfknapp.parkcompanion.util.Presenter;
 import info.jfknapp.parkcompanion.util.Session;
 
@@ -15,10 +16,12 @@ public class LoginPresenter extends Presenter{
     private LoginActivity mActivity;
     private String mUsername;
     private String mPassword;
+    private Session mSession;
 
     public LoginPresenter(LoginActivity activity){
         super(activity);
         mActivity = activity;
+        mSession = Session.getInstance();
 
         LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReciever, new IntentFilter("login-event"));
     }
@@ -43,13 +46,13 @@ public class LoginPresenter extends Presenter{
     }
 
     private void onLoginSuccess() {
-        Session.setUser(mUsername);
+        mSession.setCurrentUser(mUsername);
 
-        Session.log("User logged in successfully");
+        Logger.log("User logged in successfully");
         mActivity.navigateToMenu();
     }
 
     private void onLoginFailure() {
-        Session.log("Failed to login");
+        Logger.log("Failed to login");
     }
 }

@@ -40,7 +40,7 @@ public class HttpRequest {
         conn.setRequestMethod("POST");
         conn.setDoOutput(true);
 
-        Session.log("Created http request");
+        Logger.log("Created http request");
     }
 
     public void addParam(String key, String value) throws UnsupportedEncodingException {
@@ -72,7 +72,7 @@ public class HttpRequest {
             data = new JSONObject(json.optString("data"));
         }
 
-        Session.log("Request executed");
+        Logger.log("Request executed");
     }
 
     public String getStatus() throws JSONException {

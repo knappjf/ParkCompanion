@@ -8,20 +8,20 @@ import android.widget.EditText;
 import info.jfknapp.parkcompanion.R;
 
 public class LoginSettingsActivity extends Activity {
-    private EditText addressField;
-    private EditText portField;
+    private EditText mAddressField;
+    private LoginSettingsPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_settings);
+        mPresenter = new LoginSettingsPresenter(this);
 
-        addressField = (EditText) findViewById(R.id.server_address_field);
-        portField = (EditText) findViewById(R.id.server_port_field);
+        mAddressField = (EditText) findViewById(R.id.server_address_field);
     }
 
-    public void onSave(View v) {
-        String address = addressField.getText().toString();
-        String port = portField.getText().toString();
+    public void onSaveButton(View v) {
+        mPresenter.storeAddress(mAddressField.getText().toString());
+        this.finish();
     }
 }

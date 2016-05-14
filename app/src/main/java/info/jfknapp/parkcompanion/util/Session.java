@@ -1,28 +1,36 @@
 package info.jfknapp.parkcompanion.util;
 
-import android.util.Log;
+// Singleton class used to store state data like currently logged in user
 
-
-/**
- * Created by Jeff on 4/25/2016.
- */
 public class Session {
-    private static final String TAG = "[Park Companion]";
-    public static final String PREFS = "parkcompanion_prefs";
+    private static Session mInstance = null;
 
-    private static String currentUser;
+    private String mCurrentUser;
 
-
-    public static void log(String message){
-        Log.d(TAG, message);
+    private Session(){
+        mCurrentUser = null;
     }
 
-    public static void setUser(String user){
-        currentUser=user;
+    public static Session getInstance(){
+        if(mInstance == null){
+            mInstance = new Session();
+        }
+
+        return mInstance;
     }
 
-    public static String getUser(){
-        return currentUser;
+//    Prevents calling clone method from Object superclass
+    @Override
+    public Object clone() throws CloneNotSupportedException
+    {
+        throw new CloneNotSupportedException();
     }
 
+    public void setCurrentUser(String user){
+        mCurrentUser = user;
+    }
+
+    public String getCurrentUser(){
+        return mCurrentUser;
+    }
 }

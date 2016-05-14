@@ -4,17 +4,22 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal">
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/server_address"
-        android:id="@+id/server_address_field" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/server_port"
-        android:id="@+id/server_port_field" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/server_address"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/server_address_field" />
+
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"

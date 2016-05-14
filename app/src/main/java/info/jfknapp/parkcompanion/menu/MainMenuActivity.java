@@ -34,7 +34,6 @@ public class MainMenuActivity extends Activity{
     }
 
     public void onLogoutButton(View v) {
-        //Session.setUser(null);
         finish();
     }
 }
