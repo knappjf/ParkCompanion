@@ -17,7 +17,7 @@ import info.jfknapp.parkcompanion.R;
 
 public class TaskListActivity extends Activity {
     TasksPresenter mPresenter;
-    ArrayAdapter<String> adapter;
+    ArrayAdapter<String> mAdapter;
     String selected = null;
     List<String> taskList;
 
@@ -25,27 +25,17 @@ public class TaskListActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_task_list);
+
 
         mPresenter = new TasksPresenter(this);
         taskList = mPresenter.getTaskList();
 
-        //Fetches the task list from the server
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                mPresenter.fetchTaskList();
-//            }
-//        }).start();
+        mAdapter = new ArrayAdapter<>(this, R.layout.task_item_view, taskList);
 
-
-        adapter = new ArrayAdapter<String>(this, R.layout.task_item_view, taskList);
-
-
-
-        setContentView(R.layout.activity_task_list);
 
         final ListView taskListView = (ListView) findViewById(R.id.task_listview);
-        taskListView.setAdapter(adapter);
+        taskListView.setAdapter(mAdapter);
 
         taskListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -60,24 +50,19 @@ public class TaskListActivity extends Activity {
         Intent intent = new Intent(this, TaskDetailsActivity.class);
         intent.putExtra("task_name", selected);
         startActivity(intent);
+        finish();
     }
 
     public void onEditButton(View v){
         Intent intent = new Intent(this, TaskEditActivity.class);
         intent.putExtra("task_name", selected);
         startActivity(intent);
-        taskList = mPresenter.getTaskList();
-        adapter.notifyDataSetChanged();
+        finish();
     }
 
     public void onCreateTaskButton(View v) {
         Intent intent = new Intent(this, TaskEditActivity.class);
         startActivity(intent);
-    }
-
-    //This doesn't work, don't know why
-    public void onRefreshButton(View v) {
-        taskList = mPresenter.getTaskList();
-        adapter.notifyDataSetChanged();
+        finish();
     }
 }

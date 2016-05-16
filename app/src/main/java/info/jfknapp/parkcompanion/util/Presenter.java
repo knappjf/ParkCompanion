@@ -9,6 +9,7 @@ import info.jfknapp.parkcompanion.R;
 public class Presenter {
     protected Activity mActivity;
     protected SharedPreferences mSettings;
+    protected String mDefaultAddress;
 
     public Presenter(Activity activity){
         mActivity = activity;
@@ -17,6 +18,9 @@ public class Presenter {
         if(mSettings.getBoolean("first_run", true)){
             loadDefaults();
         }
+
+         mDefaultAddress = mActivity.getResources().getString(R.string.default_address)
+                + mActivity.getResources().getString(R.string.default_server_file);
     }
 
     private void loadDefaults(){
@@ -26,7 +30,7 @@ public class Presenter {
         editor.putBoolean("first_run", false);
 
 //        Load default server address
-        editor.putString("address",mActivity.getResources().getString(R.string.default_address));
+        editor.putString("address",mDefaultAddress);
 
 //        Commit values to settings
         editor.commit();

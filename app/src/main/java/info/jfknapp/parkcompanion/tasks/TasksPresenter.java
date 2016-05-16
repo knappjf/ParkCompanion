@@ -1,62 +1,61 @@
 package info.jfknapp.parkcompanion.tasks;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import info.jfknapp.parkcompanion.util.DatabaseHelper;
+import info.jfknapp.parkcompanion.util.HttpRequest;
 import info.jfknapp.parkcompanion.util.Presenter;
+import info.jfknapp.parkcompanion.util.Util;
 
-public class TasksPresenter extends Presenter{
-    private List<String> taskList;
-    private List<Task> tasks;
-    private DatabaseHelper db;
+public class TasksPresenter extends Presenter {
+    private TaskListActivity mActivity;
+    private List<String> mTaskList;
 
-    public TasksPresenter(Activity activity) {
+    public TasksPresenter(TaskListActivity activity) {
         super(activity);
-        db = new DatabaseHelper(activity);
-        tasks = new ArrayList<>();
+        mActivity = activity;
+        mTaskList = new ArrayList<>();
+        fetchTasks();
+        LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReciever, new IntentFilter("listtasks-intent"));
+    }
 
-        taskList = db.getTaskList();
+    private void fetchTasks(){
+        FetchTasksRunnable task = new FetchTasksRunnable(mActivity);
+        new Thread(task).start();
+    }
 
-        for (String s : taskList) {
-            tasks.add(db.getTask(s));
+    private BroadcastReceiver mReciever = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            onTaskListRecieve(intent.getStringArrayExtra("result"));
         }
+    };
+
+    public List<String> getTaskList(){
+        return mTaskList;
     }
 
-    public List<String> getTaskList() {
-        return taskList;
-    }
+    public Task getTask(String name){return null;}
 
-    public void addTask(String name, String description, String park) {
-        Task task = new Task(name, description, park);
+    public void addTask(Task task){}
 
-        db.addTask(task);
-        db.close();
-    }
+    public void deleteTask(String name){}
 
-    public void deleteTask(String name) {
-        db.deleteTask(name);
-    }
-
-    //Returns task if found, returns null if task not found
-    public Task getTask(String name) {
-        for (Task t : tasks) {
-            if (t.getName().equals(name)) {
-                return t;
-            }
+//    Private method that adds items from result string array to the task list
+    private void onTaskListRecieve(String[] result){
+        for (String s : result) {
+            mTaskList.add(s);
         }
-        return null;
-    }
-
-    //This will be the method that fetches the task list from the server
-    //It will remain empty until I figure out how to connect to the server
-    public void fetchTaskList() {
-    }
-
-    //This will be the method that publishes the new/updated task to the server
-    //It will remain empty until I figure out how to connect to the server
-    public void pushChanges(Task t) {
     }
 }

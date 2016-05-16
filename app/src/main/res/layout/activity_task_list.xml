@@ -29,11 +29,6 @@
             android:text="@string/task_create_button"
             android:onClick="onCreateTaskButton" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/refresh_button"
-            android:onClick="onRefreshButton" />
 
     </LinearLayout>
 

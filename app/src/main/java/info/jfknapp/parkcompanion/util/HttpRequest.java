@@ -3,6 +3,7 @@ package info.jfknapp.parkcompanion.util;
 import android.util.ArrayMap;
 import android.util.JsonReader;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,7 +29,7 @@ public class HttpRequest {
     private HttpURLConnection conn;
     private BufferedReader reader;
     private String result;
-    private JSONObject data;
+    private Object data;
 
     public HttpRequest(String address, String charset) throws IOException {
         this.charset = charset;
@@ -55,21 +56,31 @@ public class HttpRequest {
         writer.flush();
         writer.close();
 
+
         reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
         StringBuilder sb = new StringBuilder();
         String line = null;
 
+//        Read results into StringBuilder
         while ((line = reader.readLine()) != null) {
             sb.append(line);
             break;
         }
 
+//        Create JSONObject from json string sent from server
         JSONObject json = new JSONObject(sb.toString());
+
+//        Extract status string from JSONObject
         result = json.optString("status");
 
-        if (!(json.optString("data").equals(""))) {
-            data = new JSONObject(json.optString("data"));
+//        Try to get JSONObject type from data field
+        if(json.has("data")){
+             data = json.optJSONObject("data");  //If not a json object, data will be null
+        }
+
+        if (data == null){
+            data = json.optJSONArray("data");
         }
 
         Logger.log("Request executed");
@@ -79,7 +90,7 @@ public class HttpRequest {
         return result;
     }
 
-    public JSONObject getData() throws JSONException {
+    public Object getData() {
         return data;
     }
 
