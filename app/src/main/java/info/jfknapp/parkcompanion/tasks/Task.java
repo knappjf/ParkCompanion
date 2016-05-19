@@ -1,5 +1,7 @@
 package info.jfknapp.parkcompanion.tasks;
 
+import android.content.Context;
+
 public class Task {
     private String name;
     private String description;

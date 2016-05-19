@@ -75,26 +75,5 @@ public class FetchTasksRunnable implements Runnable {
             intent.putExtra("result", dataArray);
             LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
         }
-        else if(request.getData() instanceof JSONObject){
-            JSONObject data = (JSONObject)request.getData();
-
-//            Store data as hash map
-            HashMap<String, String> map = new HashMap<>();
-            Iterator<String> iterator = data.keys();
-
-            while(iterator.hasNext()){
-                String key = iterator.next();
-                try {
-                    map.put(key, data.getString(key));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-//            Create and send an intent with map as extra
-            Intent intent = new Intent("gettask-intent");   //ToDo:Store this as a constant somewhere
-            intent.putExtra("result", map);
-            LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
-        }
     }
 }

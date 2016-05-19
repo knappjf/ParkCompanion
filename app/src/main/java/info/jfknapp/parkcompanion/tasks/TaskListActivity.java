@@ -14,25 +14,20 @@ import java.util.List;
 
 import info.jfknapp.parkcompanion.R;
 
-
 public class TaskListActivity extends Activity {
+
     TasksPresenter mPresenter;
     ArrayAdapter<String> mAdapter;
     String selected = null;
-    List<String> taskList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
 
-
         mPresenter = new TasksPresenter(this);
-        taskList = mPresenter.getTaskList();
 
-        mAdapter = new ArrayAdapter<>(this, R.layout.task_item_view, taskList);
-
+        mAdapter = new ArrayAdapter<>(this, R.layout.task_item_view, mPresenter.getTaskList());
 
         final ListView taskListView = (ListView) findViewById(R.id.task_listview);
         taskListView.setAdapter(mAdapter);
@@ -44,7 +39,6 @@ public class TaskListActivity extends Activity {
             }
         });
     }
-
 
     public void onDetailsButton(View v){
         Intent intent = new Intent(this, TaskDetailsActivity.class);
