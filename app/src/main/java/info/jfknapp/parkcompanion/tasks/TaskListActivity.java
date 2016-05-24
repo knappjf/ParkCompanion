@@ -16,18 +16,21 @@ import info.jfknapp.parkcompanion.R;
 
 public class TaskListActivity extends Activity {
 
-    TasksPresenter mPresenter;
-    ArrayAdapter<String> mAdapter;
+    TaskListPresenter mPresenter;
+    ArrayAdapter mAdapter;
     String selected = null;
+    List<String> mNamesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
 
-        mPresenter = new TasksPresenter(this);
+        mPresenter = new TaskListPresenter(this);
 
-        mAdapter = new ArrayAdapter<>(this, R.layout.task_item_view, mPresenter.getTaskList());
+        mNamesList = new ArrayList<>();
+
+        mAdapter = new ArrayAdapter<>(this, R.layout.task_item_view, mNamesList);
 
         final ListView taskListView = (ListView) findViewById(R.id.task_listview);
         taskListView.setAdapter(mAdapter);
@@ -38,6 +41,8 @@ public class TaskListActivity extends Activity {
                 selected = (String) taskListView.getItemAtPosition(position);
             }
         });
+
+        mPresenter.getTaskNames();
     }
 
     public void onDetailsButton(View v){
@@ -58,5 +63,20 @@ public class TaskListActivity extends Activity {
         Intent intent = new Intent(this, TaskEditActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void updateNamesList(String[] names){
+//        Clears name list if not empty
+        if(!mNamesList.isEmpty()){
+            mNamesList.clear();
+        }
+
+//        Copy elements of string array to list
+        for(String s : names){
+            mNamesList.add(s);
+        }
+
+
+        mAdapter.notifyDataSetChanged();
     }
 }
