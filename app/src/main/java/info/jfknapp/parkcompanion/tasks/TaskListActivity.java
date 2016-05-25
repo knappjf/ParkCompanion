@@ -64,7 +64,7 @@ public class TaskListActivity extends Activity {
     }
 
     public void onCreateTaskButton(View v) {
-        Intent intent = new Intent(this, TaskEditActivity.class);
+        Intent intent = new Intent(this, CreateTaskActivity.class);
         startActivity(intent);
     }
 
