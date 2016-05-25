@@ -55,11 +55,23 @@
     </LinearLayout>
 
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
         android:layout_height="wrap_content"
-        android:text="@string/save_changes_button"
-        android:onClick="onSaveButton" />
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_changes_button"
+            android:onClick="onSaveButton" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/task_delete_button"
+            android:onClick="onDeleteButton" />
+    </LinearLayout>
 
 
 </LinearLayout>

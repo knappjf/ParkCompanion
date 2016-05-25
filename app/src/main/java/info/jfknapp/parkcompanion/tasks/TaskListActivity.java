@@ -45,24 +45,27 @@ public class TaskListActivity extends Activity {
         mPresenter.getTaskNames();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.getTaskNames();
+    }
+
     public void onDetailsButton(View v){
         Intent intent = new Intent(this, TaskDetailsActivity.class);
         intent.putExtra("task_name", selected);
         startActivity(intent);
-        finish();
     }
 
     public void onEditButton(View v){
         Intent intent = new Intent(this, TaskEditActivity.class);
         intent.putExtra("task_name", selected);
         startActivity(intent);
-        finish();
     }
 
     public void onCreateTaskButton(View v) {
         Intent intent = new Intent(this, TaskEditActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void updateNamesList(String[] names){

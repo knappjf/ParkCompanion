@@ -15,4 +15,12 @@ public class TaskEditPresenter extends Presenter {
     public void getTask(String name) {
         new GetTaskAsync(mActivity).execute(name);
     }
+
+    public void addTask(Task task) {
+        new CreateTaskAsync(mActivity).execute(task);
+    }
+
+    public void deleteTask(String name) {
+        new DeleteTaskAsync(mActivity).execute(name);
+    }
 }
