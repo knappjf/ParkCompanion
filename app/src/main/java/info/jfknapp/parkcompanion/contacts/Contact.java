@@ -1,14 +1,36 @@
 package info.jfknapp.parkcompanion.contacts;
 
 public class Contact {
-    private String name, fullName, park, phone, title;
+    private String name, park, phone, title;
 
-    public Contact(String name, String fullName, String park, String phone, String title) {
-        this.name = name;
-        this.fullName = fullName;
-        this.park = park;
-        this.phone = phone;
-        this.title = title;
+    public Contact(String name, String park, String phone, String title) {
+        if(name == null){
+            this.name = "";
+        }
+        else{
+            this.name = name;
+        }
+
+        if(park == null){
+            this.park = "";
+        }
+        else{
+            this.park = park;
+        }
+
+        if(phone == null){
+            this.phone = "";
+        }
+        else{
+            this.phone = phone;
+        }
+
+        if(title == null){
+            this.title = "";
+        }
+        else{
+            this.title = title;
+        }
     }
 
     public String getName() {
@@ -17,14 +39,6 @@ public class Contact {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
 
     public String getPark() {

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +26,8 @@ public class TaskListActivity extends Activity {
         setContentView(R.layout.activity_task_list);
 
         mPresenter = new TaskListPresenter(this);
-
         mNamesList = new ArrayList<>();
-
-        mAdapter = new ArrayAdapter<>(this, R.layout.task_item_view, mNamesList);
+        mAdapter = new ArrayAdapter<>(this, R.layout.list_item_view, mNamesList);
 
         final ListView taskListView = (ListView) findViewById(R.id.task_listview);
         taskListView.setAdapter(mAdapter);

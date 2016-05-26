@@ -3,15 +3,36 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/contact_details_button"
-        android:onClick="onDetailsButton"/>
-    <Button
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_details_button"
+            android:onClick="onDetailsButton" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_edit_button"
+            android:onClick="onEditButton" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_create_button"
+            android:onClick="onCreateButton"/>
+
+    </LinearLayout>
+
+    <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/contact_edit_button"
-        android:onClick="onEditButton"/>
+        android:layout_height="match_parent"
+        android:id="@+id/contact_listview" />
+
 
 </LinearLayout>

@@ -7,9 +7,6 @@ import android.widget.EditText;
 
 import info.jfknapp.parkcompanion.R;
 
-/**
- * Created by Jeff on 5/25/2016.
- */
 public class CreateTaskActivity extends Activity {
     private TaskCreatePresenter mPresenter;
 
