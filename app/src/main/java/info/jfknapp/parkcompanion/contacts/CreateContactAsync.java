@@ -28,7 +28,7 @@ public class CreateContactAsync extends AsyncTask <Contact, Void, Void> {
 
         try{
             HttpRequest request = new HttpRequest(address, Util.CHARSET);
-            request.addParam("command", "task");
+            request.addParam("command", "contact");
             request.addParam("option", "create");
             request.addParam("name", contact.getName());
             request.addParam("phone", contact.getPhone());
@@ -37,10 +37,10 @@ public class CreateContactAsync extends AsyncTask <Contact, Void, Void> {
             request.execute();
 
             if(request.getStatus().equals("Success")){
-                Logger.log("Successfully created task");
+                Logger.log("Successfully created contact");
             }
             else{
-                Logger.log("Failed to create task");
+                Logger.log("Failed to create contact");
             }
         }
         catch (Exception e){
