@@ -22,7 +22,6 @@ public class LoginPresenter extends Presenter{
         super(activity);
         mActivity = activity;
         mSession = Session.getInstance();
-
         LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReciever, new IntentFilter("login-intent"));
     }
 
@@ -31,7 +30,8 @@ public class LoginPresenter extends Presenter{
         public void onReceive(Context context, Intent intent) {
             if (intent.getStringExtra("result").equals("Success")) {
                 onLoginSuccess();
-            } else {
+            }
+            else {
                 onLoginFailure();
             }
         }
@@ -40,14 +40,12 @@ public class LoginPresenter extends Presenter{
     public void login(String username, String password){
         mUsername = username;
         mPassword = password;
-
         LoginTaskRunnable task = new LoginTaskRunnable(mUsername, mPassword, mActivity);
         new Thread(task).start();
     }
 
     private void onLoginSuccess() {
         mSession.setCurrentUser(mUsername);
-
         Logger.log("User logged in successfully");
         mActivity.navigateToMenu();
     }

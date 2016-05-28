@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import info.jfknapp.parkcompanion.R;
-import info.jfknapp.parkcompanion.util.DatabaseHelper;
 
 public class TaskEditActivity extends Activity {
     private TaskEditPresenter mPresenter;

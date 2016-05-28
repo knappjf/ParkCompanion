@@ -13,7 +13,8 @@ import info.jfknapp.parkcompanion.menu.MainMenuActivity;
 public class LoginActivity extends Activity {
 
     private LoginPresenter mPresenter;
-    private EditText mUsernameField, mPasswordField;
+    private EditText mUsernameField;
+    private EditText mPasswordField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,27 +28,21 @@ public class LoginActivity extends Activity {
     }
 
     public void onLoginButton(View v){
-        final String username = mUsernameField.getText().toString();
-        final String password = mPasswordField.getText().toString();
-
+        String username = mUsernameField.getText().toString();
+        String password = mPasswordField.getText().toString();
         mPresenter.login(username, password);
     }
 
     public void onSettingsButton(View v){
-        navigateToLoginSettings();
+        Intent intent = new Intent(this, LoginSettingsActivity.class);
+        startActivity(intent);
     }
 
     public void navigateToMenu(){
         Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
-        this.finish();
     }
 
-    //For now, login settings won't be functional
-    public void navigateToLoginSettings(){
-        Intent intent = new Intent(this, LoginSettingsActivity.class);
-        startActivity(intent);
-    }
 
     public void onCreateUserButton(View v) {
         Intent intent = new Intent(this, CreateUserActivity.class);

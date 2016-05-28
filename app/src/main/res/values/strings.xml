@@ -45,7 +45,8 @@
     <string name="default_username">jeff</string>
     <string name="default_password">123</string>
 
-    <!--Default settings values-->
+    <!--Defaults-->
+    <string name="default_protocol">http://</string>
     <string name="default_address">http://192.168.1.17</string>
     <string name="default_server_file">/php/ParkCompanion/index.php</string>
 
