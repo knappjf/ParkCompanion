@@ -49,15 +49,19 @@ public class TaskListActivity extends Activity {
     }
 
     public void onDetailsButton(View v){
-        Intent intent = new Intent(this, TaskDetailsActivity.class);
-        intent.putExtra("task_name", selected);
-        startActivity(intent);
+        if (selected != null) {
+            Intent intent = new Intent(this, TaskDetailsActivity.class);
+            intent.putExtra("task_name", selected);
+            startActivity(intent);
+        }
     }
 
     public void onEditButton(View v){
-        Intent intent = new Intent(this, TaskEditActivity.class);
-        intent.putExtra("task_name", selected);
-        startActivity(intent);
+        if (selected != null) {
+            Intent intent = new Intent(this, TaskEditActivity.class);
+            intent.putExtra("task_name", selected);
+            startActivity(intent);
+        }
     }
 
     public void onCreateTaskButton(View v) {
@@ -72,8 +76,10 @@ public class TaskListActivity extends Activity {
         }
 
 //        Copy elements of string array to list
-        for(String s : names){
-            mNamesList.add(s);
+        if (names != null) {
+            for(String s : names){
+                mNamesList.add(s);
+            }
         }
 
 
