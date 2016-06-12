@@ -15,23 +15,17 @@ public class CreateUserTaskRunnable implements Runnable{
     private String mUsername;
     private String mPassword;
     private Context mContext;
-    private SharedPreferences mSettings;
 
     public CreateUserTaskRunnable(String username, String password, Context context){
         mUsername = username;
         mPassword = password;
         mContext = context;
-        mSettings = context.getSharedPreferences(Util.PREFS, Context.MODE_PRIVATE);
     }
 
     @Override
     public void run() {
-//        Load the server address from settings
-        String address = mSettings.getString("address", mContext.getResources().getString(R.string.default_address));
-        address = address.concat(mContext.getResources().getString(R.string.default_server_file));
-
         try {
-            HttpRequest request = new HttpRequest(address, Util.CHARSET);
+            HttpRequest request = new HttpRequest(Util.formAddress(mContext), Util.CHARSET);
             request.addParam("command", "user");
             request.addParam("option", "create");
             request.addParam("name", mUsername);

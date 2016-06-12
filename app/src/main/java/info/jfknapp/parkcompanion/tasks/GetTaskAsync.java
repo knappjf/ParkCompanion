@@ -25,22 +25,15 @@ public class GetTaskAsync extends AsyncTask<String, Void, Task> {
 
     public GetTaskAsync(Activity activity){
         mActivity = activity;
-        mSettings = mActivity.getSharedPreferences(Util.PREFS, Context.MODE_PRIVATE);
     }
 
     @Override
     protected Task doInBackground(String... params) {
         Task task = null;
-
-        //        Get server address from settings
-        String address = mSettings.getString("address", mActivity.getResources().getString(R.string.default_address));
-        address = address.concat(mActivity.getResources().getString(R.string.default_server_file));
-
-//        Consider verifying that params has only one value
         String taskName = params[0];
 
         try{
-            HttpRequest request = new HttpRequest(address, Util.CHARSET);
+            HttpRequest request = new HttpRequest(Util.formAddress(mActivity), Util.CHARSET);
             request.addParam("command", "task");
             request.addParam("option", "get");
             request.addParam("name", taskName);

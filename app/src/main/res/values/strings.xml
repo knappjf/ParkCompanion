@@ -47,7 +47,7 @@
 
     <!--Defaults-->
     <string name="default_protocol">http://</string>
-    <string name="default_address">http://192.168.1.17</string>
+    <string name="default_address">localhost</string>
     <string name="default_server_file">/php/ParkCompanion/index.php</string>
 
     <string name="contact_details_name_title">Name:</string>

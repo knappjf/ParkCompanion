@@ -15,24 +15,17 @@ import info.jfknapp.parkcompanion.util.Util;
 
 public class GetContactListAsync extends AsyncTask <Void, Void, String[]> {
     private Activity mActivity;
-    private SharedPreferences mSettings;
 
     public GetContactListAsync(Activity activity){
         mActivity = activity;
-        mSettings = activity.getSharedPreferences(Util.PREFS, Context.MODE_PRIVATE);
     }
 
     @Override
     protected String[] doInBackground(Void... params) {
         String[] result = null;
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(mSettings.getString("address", mActivity.getResources().getString(R.string.default_address)));
-        sb.append(mActivity.getResources().getString(R.string.default_server_file));
-        String address = sb.toString();
-
         try{
-            HttpRequest request = new HttpRequest(address, Util.CHARSET);
+            HttpRequest request = new HttpRequest(Util.formAddress(mActivity), Util.CHARSET);
             request.addParam("command", "contact");
             request.addParam("option", "list");
             request.execute();

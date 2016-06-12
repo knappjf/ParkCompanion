@@ -26,11 +26,15 @@ public class Util {
     public static String formAddress(Context context){
         SharedPreferences settings = context.getSharedPreferences(PREFS, context.MODE_PRIVATE);
 
+        String defaultAddress = context.getResources().getString(R.string.default_address);
+        String address = settings.getString("address", defaultAddress);
+
         StringBuilder sb = new StringBuilder();
         sb.append(context.getResources().getString(R.string.default_protocol));
-        sb.append(context.getResources().getString(R.string.default_address));
+        sb.append(address);
         sb.append(context.getResources().getString(R.string.default_server_file));
+        String result = sb.toString();
 
-        return settings.getString("address", sb.toString());
+        return result;
     }
 }

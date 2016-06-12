@@ -11,21 +11,15 @@ import info.jfknapp.parkcompanion.util.Util;
 
 public class DeleteContactAsync extends AsyncTask <String, Void, Void> {
     private Activity mActivity;
-    private SharedPreferences mSettings;
 
     public DeleteContactAsync(Activity activity){
         mActivity = activity;
-        mSettings = mActivity.getSharedPreferences(Util.PREFS,Activity.MODE_PRIVATE);
     }
 
     @Override
     protected Void doInBackground(String... params) {
-        //        Get server address from settings
-        String address = mSettings.getString("address", mActivity.getResources().getString(R.string.default_address));
-        address = address.concat(mActivity.getResources().getString(R.string.default_server_file));
-
         try{
-            HttpRequest request = new HttpRequest(address, Util.CHARSET);
+            HttpRequest request = new HttpRequest(Util.formAddress(mActivity), Util.CHARSET);
             request.addParam("command", "contact");
             request.addParam("option", "delete");
             request.addParam("name", params[0]);

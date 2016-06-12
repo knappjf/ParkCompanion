@@ -16,28 +16,19 @@ import info.jfknapp.parkcompanion.util.HttpRequest;
 import info.jfknapp.parkcompanion.util.Logger;
 import info.jfknapp.parkcompanion.util.Util;
 
-/**
- * Created by Jeff on 5/26/2016.
- */
 public class GetContactAsync extends AsyncTask <String, Void, Contact> {
     private Activity mActivity;
-    private SharedPreferences mSettings;
 
     public GetContactAsync(Activity activity){
         mActivity = activity;
-        mSettings = mActivity.getSharedPreferences(Util.PREFS, Activity.MODE_PRIVATE);
     }
 
     @Override
     protected Contact doInBackground(String... params) {
         Contact contact = null;
 
-        //        Get server address from settings
-        String address = mSettings.getString("address", mActivity.getResources().getString(R.string.default_address));
-        address = address.concat(mActivity.getResources().getString(R.string.default_server_file));
-
         try{
-            HttpRequest request = new HttpRequest(address, Util.CHARSET);
+            HttpRequest request = new HttpRequest(Util.formAddress(mActivity), Util.CHARSET);
             request.addParam("command", "contact");
             request.addParam("option", "get");
             request.addParam("name", params[0]);

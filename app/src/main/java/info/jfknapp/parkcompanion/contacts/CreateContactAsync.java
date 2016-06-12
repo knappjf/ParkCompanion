@@ -11,23 +11,17 @@ import info.jfknapp.parkcompanion.util.Util;
 
 public class CreateContactAsync extends AsyncTask <Contact, Void, Void> {
     private Activity mActivity;
-    private SharedPreferences mSettings;
 
     public CreateContactAsync(Activity activity){
         mActivity = activity;
-        mSettings = mActivity.getSharedPreferences(Util.PREFS, Activity.MODE_PRIVATE);
     }
 
     @Override
     protected Void doInBackground(Contact... params) {
         Contact contact = params[0];
 
-        //        Get server address from settings
-        String address = mSettings.getString("address", mActivity.getResources().getString(R.string.default_address));
-        address = address.concat(mActivity.getResources().getString(R.string.default_server_file));
-
         try{
-            HttpRequest request = new HttpRequest(address, Util.CHARSET);
+            HttpRequest request = new HttpRequest(Util.formAddress(mActivity), Util.CHARSET);
             request.addParam("command", "contact");
             request.addParam("option", "create");
             request.addParam("name", contact.getName());

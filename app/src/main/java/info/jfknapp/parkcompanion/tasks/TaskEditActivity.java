@@ -36,7 +36,7 @@ public class TaskEditActivity extends Activity {
     }
 
     public void onDeleteButton(View v) {
-        String name = ((EditText) findViewById(R.id.task_park_edittext)).getText().toString();
+        String name = ((EditText) findViewById(R.id.task_name_edittext)).getText().toString();
         mPresenter.deleteTask(name);
         finish();
     }

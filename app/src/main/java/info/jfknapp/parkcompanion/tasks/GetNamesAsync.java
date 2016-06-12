@@ -16,11 +16,9 @@ import info.jfknapp.parkcompanion.util.Util;
 
 public class GetNamesAsync extends AsyncTask <Void,Void,String[]> {
     private Activity mActivity;
-    private SharedPreferences mSettings;
 
     public GetNamesAsync(TaskListActivity activity){
         mActivity = activity;
-        mSettings = activity.getSharedPreferences(Util.PREFS, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -28,12 +26,8 @@ public class GetNamesAsync extends AsyncTask <Void,Void,String[]> {
         String[] dataArray = null;
 
         try {
-//            Prepare address string
-            String address = mSettings.getString("address", mActivity.getResources().getString(R.string.default_address));
-            address = address.concat(mActivity.getResources().getString(R.string.default_server_file));
-
 //            Execute http request
-            HttpRequest request = new HttpRequest(address, Util.CHARSET);
+            HttpRequest request = new HttpRequest(Util.formAddress(mActivity), Util.CHARSET);
             request.addParam("command", "task");
             request.addParam("option", "list");
             request.execute();
