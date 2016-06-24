@@ -49,7 +49,7 @@ public class TaskListActivity extends Activity {
     }
 
     public void onDetailsButton(View v){
-        if (selected != null) {
+        if (selected != null && mNamesList.contains(selected)) {
             Intent intent = new Intent(this, TaskDetailsActivity.class);
             intent.putExtra("task_name", selected);
             startActivity(intent);
@@ -57,7 +57,7 @@ public class TaskListActivity extends Activity {
     }
 
     public void onEditButton(View v){
-        if (selected != null) {
+        if (selected != null && mNamesList.contains(selected)) {
             Intent intent = new Intent(this, TaskEditActivity.class);
             intent.putExtra("task_name", selected);
             startActivity(intent);

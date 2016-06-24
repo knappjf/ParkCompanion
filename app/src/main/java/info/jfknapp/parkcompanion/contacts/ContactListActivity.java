@@ -28,13 +28,13 @@ public class ContactListActivity extends Activity {
         mNamesList = new ArrayList<>();
         mAdapter = new ArrayAdapter<>(this, R.layout.list_item_view, mNamesList);
 
-        final ListView taskListView = (ListView) findViewById(R.id.contact_listview);
-        taskListView.setAdapter(mAdapter);
+        final ListView contactListView = (ListView) findViewById(R.id.contact_listview);
+        contactListView.setAdapter(mAdapter);
 
-        taskListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        contactListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mSelected = (String) taskListView.getItemAtPosition(position);
+                mSelected = (String) contactListView.getItemAtPosition(position);
             }
         });
     }
@@ -46,7 +46,7 @@ public class ContactListActivity extends Activity {
     }
 
     public void onDetailsButton(View v){
-        if(mSelected != null) {
+        if(mSelected != null && mNamesList.contains(mSelected)) {
             Intent intent = new Intent(this, ContactDetailsActivity.class);
             intent.putExtra("name", mSelected);
             startActivity(intent);
@@ -54,7 +54,7 @@ public class ContactListActivity extends Activity {
     }
 
     public void onEditButton(View v){
-        if (mSelected != null) {
+        if (mSelected != null && mNamesList.contains(mSelected)) {
             Intent intent = new Intent(this, ContactEditActivity.class);
             intent.putExtra("name", mSelected);
             startActivity(intent);
