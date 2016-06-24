@@ -7,9 +7,7 @@ import android.view.View;
 
 import info.jfknapp.parkcompanion.R;
 import info.jfknapp.parkcompanion.contacts.ContactListActivity;
-import info.jfknapp.parkcompanion.settings.SettingsActivity;
 import info.jfknapp.parkcompanion.tasks.TaskListActivity;
-import info.jfknapp.parkcompanion.util.Session;
 
 public class MainMenuActivity extends Activity{
     @Override
@@ -28,10 +26,6 @@ public class MainMenuActivity extends Activity{
         startActivity(intent);
     }
 
-    public void onSettingsButton(View v){
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
 
     public void onLogoutButton(View v) {
         finish();

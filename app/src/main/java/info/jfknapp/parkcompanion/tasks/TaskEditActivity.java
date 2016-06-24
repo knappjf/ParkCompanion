@@ -24,7 +24,7 @@ public class TaskEditActivity extends Activity {
     }
 
     public void onSaveButton(View v) {
-        EditText name = (EditText) findViewById(R.id.task_park_edittext);
+        EditText name = (EditText) findViewById(R.id.task_name_edittext);
         EditText park = (EditText) findViewById(R.id.task_park_edittext);
         EditText description = (EditText) findViewById(R.id.task_description_edittext);
 
