@@ -1,6 +1,5 @@
 package info.jfknapp.parkcompanion.login;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 
 import info.jfknapp.parkcompanion.util.Presenter;

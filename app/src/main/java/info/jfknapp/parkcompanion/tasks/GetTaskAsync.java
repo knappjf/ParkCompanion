@@ -1,15 +1,12 @@
 package info.jfknapp.parkcompanion.tasks;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Iterator;

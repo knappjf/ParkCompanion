@@ -22,10 +22,10 @@ public class LoginPresenter extends Presenter{
         super(activity);
         mActivity = activity;
         mSession = Session.getInstance();
-        LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReciever, new IntentFilter("login-intent"));
+        LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReceiver, new IntentFilter("login-intent"));
     }
 
-    private BroadcastReceiver mReciever = new BroadcastReceiver() {
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getStringExtra("result").equals("Success")) {

@@ -1,13 +1,7 @@
 package info.jfknapp.parkcompanion.login;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
-import org.json.JSONException;
-
-import java.io.IOException;
-
-import info.jfknapp.parkcompanion.R;
 import info.jfknapp.parkcompanion.util.HttpRequest;
 import info.jfknapp.parkcompanion.util.Util;
 

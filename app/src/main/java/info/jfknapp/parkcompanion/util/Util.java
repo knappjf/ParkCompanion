@@ -1,7 +1,5 @@
 package info.jfknapp.parkcompanion.util;
 
-// Class used to provide static constants that must be available across different activities
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

@@ -6,11 +6,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 
-import info.jfknapp.parkcompanion.util.HttpRequest;
 import info.jfknapp.parkcompanion.util.Logger;
 import info.jfknapp.parkcompanion.util.Presenter;
-import info.jfknapp.parkcompanion.util.Session;
-import info.jfknapp.parkcompanion.util.Util;
 
 public class CreateUserPresenter extends Presenter {
     private CreateUserActivity mActivity;
@@ -19,10 +16,10 @@ public class CreateUserPresenter extends Presenter {
         super(activity);
         mActivity = activity;
 
-        LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReciever, new IntentFilter("create-user-intent"));
+        LocalBroadcastManager.getInstance(mActivity).registerReceiver(mReceiver, new IntentFilter("create-user-intent"));
     }
 
-    private BroadcastReceiver mReciever = new BroadcastReceiver() {
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getStringExtra("result").equals("Success")) {

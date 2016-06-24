@@ -4,9 +4,6 @@ import android.app.Activity;
 
 import info.jfknapp.parkcompanion.util.Presenter;
 
-/**
- * Created by Jeff on 5/25/2016.
- */
 public class ContactListPresenter extends Presenter{
     private ContactListActivity mActivity;
 

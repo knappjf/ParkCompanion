@@ -1,7 +1,5 @@
 package info.jfknapp.parkcompanion.util;
 
-// Singleton class used to store state data like currently logged in user
-
 public class Session {
     private static Session mInstance = null;
 

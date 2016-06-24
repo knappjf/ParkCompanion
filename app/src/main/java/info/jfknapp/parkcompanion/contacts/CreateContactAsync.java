@@ -1,10 +1,8 @@
 package info.jfknapp.parkcompanion.contacts;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
-import info.jfknapp.parkcompanion.R;
 import info.jfknapp.parkcompanion.util.HttpRequest;
 import info.jfknapp.parkcompanion.util.Logger;
 import info.jfknapp.parkcompanion.util.Util;
